@@ -1,12 +1,14 @@
 package com.singletontest;
 
 public class SingleTone {
-    private static SingleTone INS=new SingleTone();
+    private static SingleTone INS;
     private SingleTone(){}
     public static SingleTone getInstances(){
         if(INS==null){
             synchronized(SingleTone.class){
-                return new SingleTone();
+                if(INS==null){
+                    return new SingleTone();
+                }
             }
 
         }
